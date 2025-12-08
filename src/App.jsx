@@ -6,10 +6,12 @@ import Habits from './pages/Habits'
 import EventPlanner from './pages/EventPlanner'
 import Login from './pages/Login'
 import ErrorPage from './pages/ErrorPage'
+import EventProvider from './context/EventContext'
 
 function App() {
 
   return (
+    <EventProvider>
     <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/todos' element={<TodosActivities />}/>
@@ -18,6 +20,7 @@ function App() {
       <Route path='/login' element={<Login />}/>
       <Route path='*' element={<ErrorPage />}/>
     </Routes>
+    </EventProvider>
   )
 }
 
