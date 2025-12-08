@@ -1,6 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Navigation.module.css";
 import Logo from "../../assets/shamanLogo.grey.png";
+import eventsIcon from "../../assets/icons8-calendar-75.png";
+import dashboardIcon from "../../assets/icons8-dashboard-96.png";
+import habitsIcon from "../../assets/icons8-sparkles-60.png";
+import todoIcon from "../../assets/icons8-checkbox-50.png";
 
 function Navigation() {
   const location = useLocation();
@@ -11,23 +15,23 @@ function Navigation() {
   }
 
   const navItems = [
-    { path: "/", label: "Dashboard" },
-    { path: "/todos", label: "Todos" },
-    { path: "/habits", label: "Habits" },
-    { path: "/events", label: "Event planner" },
+    { path: "/", label: "Dashboard", img: dashboardIcon },
+    { path: "/todos", label: "Todos", img: todoIcon },
+    { path: "/habits", label: "Habits", img: habitsIcon },
+    { path: "/events", label: "Event planner", img: eventsIcon },
   ];
 
   return (
     <nav className={styles.sidebar}>
       <div className={styles.logoDiv}>
-        <Link to="/"><img
-          src={Logo}
-          alt="Logo representing a old shaman sitting down and meditating"
-          width={100}
-        /></Link>
-        <h1 className={styles.title}>
-          HaloMind
-        </h1>
+        <Link to="/">
+          <img
+            src={Logo}
+            alt="Logo representing a old shaman sitting down and meditating"
+            width={100}
+          />
+        </Link>
+        <h1 className={styles.title}>HaloMind</h1>
       </div>
       <ul className={styles.navList}>
         {navItems.map((item) => (
@@ -38,6 +42,7 @@ function Navigation() {
                 location.pathname === item.path ? styles.active : ""
               }`}
             >
+              <img src={item.img} alt="" className={styles.icons}/>
               {item.label}
             </Link>
           </li>
