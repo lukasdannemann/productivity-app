@@ -4,10 +4,10 @@ import styles from '../EventsDiv/Events.module.css'
 
 const Events = () => {
 
-    const {events} = useContext(EventContext)
+    const { sortedEvents} = useContext(EventContext)
     return(
         <div className={styles.eventsGrid}>
-            {events?.map(event => (
+            {sortedEvents?.map(event => (
                 <div key={event.title} className={styles.eventsDiv}>
                     <h3>{event.title}</h3>
                     <ul>
