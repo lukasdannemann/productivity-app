@@ -8,10 +8,12 @@ import Login from "./pages/Login";
 import ErrorPage from "./pages/ErrorPage";
 import Navigation from "./components/navigation/Navigation";
 import styles from "./App.module.css";
+import EventProvider from "./context/EventContext";
 
 function App() {
   return (
     <>
+      <EventProvider>
       <div className={styles.layout}>
         <Navigation />
         <main className={styles.content}>
@@ -25,6 +27,7 @@ function App() {
           </Routes>
         </main>
       </div>
+      </EventProvider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import EventForm from '../components/navigation/eventForm/EventForm/'
+import EventForm from '../components/eventForm/eventForm'
 import Events from '../components/EventsDiv/Events'
 import { useState } from 'react'
 
@@ -8,7 +8,7 @@ export default function EventPlanner(){
 
     return(
         <>
-        {show ? <EventForm /> : <button>Lägg till händelse</button>}
+        {!show ? <EventForm /> : <button onClick={() => setShow(false)}>Lägg till händelse</button>}
         <Events />
         </>
     )
