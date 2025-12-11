@@ -9,34 +9,37 @@ const EventForm = () => {
     const [end, setEnd] = useState('')
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [date, setDate] = useState('')
 
     const addEvent = (e) => {
         e.preventDefault()
+        console.log(events)
 
         let newEvent = {
+            id: Date.now().toString(),
             title,
             description,
-            date,
             start,
             end
         }
 
-        if (!title || !description || !date || !start || !end){
+        if (start >= end ){
+            alert('Du måste välja korrekt datum')
+            return;
+        }
+
+        if (!title || !description || !start || !end){
             alert('Du måste fylla i alla fälten')
             return;
         }
 
         setEvents([...events, newEvent])
-        console.log(events)
+        
         setTitle('')
         setDescription('')
-        setDate('')
         setStart('')
         setEnd('')
-
-        new Date(date).toLocaleString()
     }
+
     return (
         <div className={styles.formDiv}>
             <form className={styles.form} onSubmit={addEvent}>
@@ -47,14 +50,11 @@ const EventForm = () => {
                 <label>Beskrivning:</label>
                 <input type="textarea" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-                <label>Datum:</label>
-                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-
                 <label>Start:</label>
-                <input type="time" value={start} onChange={(e) => setStart(e.target.value)} />
+                <input type="datetime-local" value={start} onChange={(e) => setStart(e.target.value)} />
 
                 <label>Slut:</label>
-                <input type="time" value={end} onChange={(e) => setEnd(e.target.value)} />
+                <input type="datetime-local" value={end} onChange={(e) => setEnd(e.target.value)} />
 
                 <button>Lägg till</button>
             </form>
