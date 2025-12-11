@@ -24,3 +24,20 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
 }
+
+li{
+  list-style: none;
+}
+
+input{
+  border-radius: var(--radius-md);
+}
+
+button{
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+}
+
+button:hover {
+  cursor: pointer
+}
