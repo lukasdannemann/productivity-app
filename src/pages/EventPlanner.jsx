@@ -1,4 +1,4 @@
-import EventForm from '../components/eventForm/eventForm'
+import EventForm from '../components/eventForm/EventForm'
 import Events from '../components/EventsDiv/Events'
 import { useState } from 'react'
 import styles from '../components/eventForm/EventForm.module.css'
