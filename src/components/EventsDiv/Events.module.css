@@ -8,7 +8,6 @@
   margin: var(--spacing-md);
 }
 .eventsGrid{
-    margin-top: var(--spacing-lg);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 0.5rem;
@@ -18,4 +17,21 @@
 .past {
   color: grey;
   opacity: 0.6;
+}
+
+.filterList{
+  display: inline-block;
+  width: fit-content;
+  margin-left: var(--spacing-md);
+}
+
+.newEventButton{
+    background-color: var(--color-primary);
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.popupText{
+  text-align: center;
 }

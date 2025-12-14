@@ -4,15 +4,16 @@ import styles from '../eventForm/EventForm.module.css'
 
 const EventForm = () => {
 
-    const { events, setEvents, editEvent, stopEditing } = useContext(EventContext)
+    const { 
+        events, setEvents, editEvent, stopEditing,
+        showForm, setShowForm} = useContext(EventContext)
+
     const [start, setStart] = useState('')
     const [end, setEnd] = useState('')
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
-    let now = new Date().toISOString().slice(0, 16)
-
-    const emptyEvents = () => {
+    const emptyInputs = () => {
         setTitle('')
         setDescription('')
         setStart('')
@@ -20,6 +21,8 @@ const EventForm = () => {
     }
 
     useEffect(() => {
+        // Använder useEffect för att sätta alla tomma inputs till värdena för valt event
+        // vid redigering
         if(editEvent){
             setTitle(editEvent.title)
             setDescription(editEvent.description)
@@ -34,18 +37,22 @@ const EventForm = () => {
 
         if(editEvent){
 
-            const updatedEvents = events.map(ev => 
-                ev.id === editEvent.id ? 
-                {...ev, title, description, start, end} : ev
+            //Om användaren redigerar, uppdatera event till updatedEvents i events[] med samma id som
+            //användaren valt
+            const updatedEvents = events.map(event => 
+                event.id === editEvent.id ? 
+                {...event, title, description, start, end} : event
             )
             
             setEvents(updatedEvents)
             stopEditing()
-            emptyEvents()
+            emptyInputs()
+            setShowForm(false)
             return;
         }
 
         let newEvent = {
+            //Ger nytt event unikt id beroende på datum
             id: Date.now().toString(),
             title,
             description,
@@ -64,7 +71,10 @@ const EventForm = () => {
         }
 
         setEvents([...events, newEvent])
-        emptyEvents()
+        emptyInputs()
+        setShowForm(false)
+
+        if(!showForm) return null;
         
     }
 
@@ -75,16 +85,19 @@ const EventForm = () => {
                 <div className={styles.inputContainer}>
                 <div>
                 <label className={styles.startTime}>Starts: </label>
-                <input type="datetime-local" min={now} max='2099-12-31T23:59' value={start} onChange={(e) => setStart(e.target.value)} />
+                <input type="datetime-local" min='2025-01-01T00:00' max='2099-12-31T23:59' value={start} onChange={(e) => setStart(e.target.value)} />
                 </div>
                 <div>
                 <label className={styles.endTime}>Ends: </label>
-                <input type="datetime-local" min={now} max='2099-12-31T23:59' value={end} onChange={(e) => setEnd(e.target.value)} />
+                <input type="datetime-local" min='2025-01-01T00:00' max='2099-12-31T23:59' value={end} onChange={(e) => setEnd(e.target.value)} />
                 </div>
-                <input type="text" value={title} placeholder="Choose a title" onChange={(e) => setTitle(e.target.value)} />
+                <input type="text" value={title} placeholder="Choose a title..." onChange={(e) => setTitle(e.target.value)} />
 
                 <textarea value={description} rows='4' cols='30' placeholder="Describe your event..." onChange={(e) => setDescription(e.target.value)} />
+                <div>
                 <button>{ editEvent ? 'Save changes' : 'Add event' }</button>
+                <button type="button" onClick={() => emptyInputs()}>Clear</button>
+                </div>
                 </div>
             </form>
 

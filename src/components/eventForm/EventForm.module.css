@@ -28,12 +28,6 @@
     border-radius: var(--radius-md);
 }
 
-.newEventButton{
-    background-color: var(--color-primary);
-    border: none;
-    display: flex;
-    justify-content: center;
-}
 
 .startTime{
     display: flex;
