@@ -1,17 +1,64 @@
 form {
-  padding: 60px;
-  background-color: rgb(27, 27, 27);
-  border-radius: 5%;
+  padding: clamp(2rem, 5vw, 4rem);
+  background-color: transparent;
 }
 
 .formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
   text-align: center;
 }
 
+.formContent label {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  text-align: left;
+}
+
+.formContent select {
+  padding: 0.9rem 1rem;
+  font-size: 1.2rem;
+  background-color: rgb(41, 41, 41);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
 form button {
+  margin-top: 2rem;
   background-color: var(--color-primary);
   color: var(--color-text);
   border: none;
   font-size: 1.2rem;
   padding: 15px 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+}
+
+.form {
+  padding: clamp(2rem, 5vw, 4rem);
+  background-color: transparent;
+
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: formOpen 0.4s ease-out forwards;
+}
+
+@keyframes formOpen {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

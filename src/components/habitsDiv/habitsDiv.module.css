@@ -1,27 +1,181 @@
+/* Container for the habits section */
 .habits {
-  text-align: start;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text);
+  padding: 2rem;
+  width: 100%; /* Full width */
+  margin: 0; /* Remove auto centering */
 }
 
+/* Section header */
 .habits h2 {
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
 }
 
-.habits h3 {
-    font-size: 2rem;
-}
-
-.habitCards {
-  width: 100%;
-  gap: 10rem;
+/* Controls container (filter/sort) */
+.controls {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width */
 }
 
+/* Individual control groups */
+.controls div {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Labels in controls */
+.controls label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Select inputs in controls */
+.controls select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  background-color: rgb(34, 34, 34);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.controls select:hover,
+.controls select:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+/* Habit cards grid: 3 cards per row on desktop */
+.habitCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%; /* Full width */
+  justify-items: stretch; /* Cards fill column */
+  box-sizing: border-box;
+}
+
+/* Medium screens - 2 cards per row */
+@media (max-width: 1024px) {
+  .habitCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens - 1 card per row */
+@media (max-width: 640px) {
+  .habitCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual habit card */
 .habitCard {
-  padding: 1rem;
-  width: 300px;
-  border: solid 1px var(--color-primary);
-  border-radius: 5px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.08)
+  );
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%; /* Card fills its grid column */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.habitCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  border-color: var(--color-primary);
+}
+
+/* No habits placeholder */
+.noHabitsYet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--color-text);
+}
+
+.noHabitsYet h2 {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.08)
+  );
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+}
+
+/* Habit icon container */
+.habitIcn {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.habitIcn img {
+  width: 60%;
+  height: auto;
+}
+
+/* Habit label */
+.habitCard h3 {
+  font-size: 1.85rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Priority badge */
+.priority {
+  align-self: flex-start;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Priority colors */
+.priority.High {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ff4d4d;
+}
+
+.priority.Medium {
+  background: rgba(255, 200, 80, 0.15);
+  color: #ffc94d;
+}
+
+.priority.Low {
+  background: rgba(80, 200, 120, 0.15);
+  color: #4ade80;
 }
