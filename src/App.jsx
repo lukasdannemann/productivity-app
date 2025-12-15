@@ -11,10 +11,12 @@ import styles from "./App.module.css";
 import SignUp from "./pages/SignUp";
 import EventProvider from "./context/EventContext";
 import { HabitsProvider } from "./context/HabitsContext";
+import UserProvider from "./context/UserContext";
 
 function App() {
   return (
     <>
+      <UserProvider>
       <EventProvider>
         <HabitsProvider>
           <div className={styles.layout}>
@@ -33,6 +35,7 @@ function App() {
           </div>
         </HabitsProvider>
       </EventProvider>
+      </UserProvider>
     </>
   );
 }

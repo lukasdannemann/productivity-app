@@ -1,13 +1,18 @@
-import { createContext, useState } from "react"
+import { createContext, useContext, useState } from "react"
+import { UserContext } from "./UserContext"
 
 export const EventContext = createContext()
 
 export default function EventProvider({children}){
 
+    const { user } = useContext(UserContext)
+
     const [events, setEvents] = useState([])
     const [editEvent, setEditEvent] = useState(null)
     const [filter, setFilter] = useState('')
     const [showForm, setShowForm] = useState(false)
+
+    const userEvents = events.filter(event => event.userId === user?.id)
 
     const startEditing = (event) => {
         setEditEvent(event)

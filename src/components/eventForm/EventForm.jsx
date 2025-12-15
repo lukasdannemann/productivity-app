@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import { EventContext } from "../../context/EventContext"
 import styles from '../eventForm/EventForm.module.css'
+import { UserContext } from "../../context/UserContext"
 
 const EventForm = () => {
 
     const { 
         events, setEvents, editEvent, stopEditing,
         showForm, setShowForm} = useContext(EventContext)
+    const {user} = useContext(UserContext)
 
     const [start, setStart] = useState('')
     const [end, setEnd] = useState('')
@@ -54,6 +56,7 @@ const EventForm = () => {
         let newEvent = {
             //Ger nytt event unikt id beroende på datum
             id: Date.now().toString(),
+            userId: user.id,
             title,
             description,
             start,
