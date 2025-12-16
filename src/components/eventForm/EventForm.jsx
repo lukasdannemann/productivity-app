@@ -8,7 +8,7 @@ const EventForm = () => {
     const { 
         events, setEvents, editEvent, stopEditing,
         showForm, setShowForm} = useContext(EventContext)
-    const {user} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
     const [start, setStart] = useState('')
     const [end, setEnd] = useState('')
@@ -56,7 +56,7 @@ const EventForm = () => {
         let newEvent = {
             //Ger nytt event unikt id beroende på datum
             id: Date.now().toString(),
-            userId: user.id,
+            userId: currentUser.id,
             title,
             description,
             start,

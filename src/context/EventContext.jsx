@@ -5,14 +5,14 @@ export const EventContext = createContext()
 
 export default function EventProvider({children}){
 
-    const { user } = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
 
     const [events, setEvents] = useState([])
     const [editEvent, setEditEvent] = useState(null)
     const [filter, setFilter] = useState('')
     const [showForm, setShowForm] = useState(false)
 
-    const userEvents = events.filter(event => event.userId === user?.id)
+    const currentUserEvents = events.filter(event => event.userId === currentUser?.id)
 
     const startEditing = (event) => {
         setEditEvent(event)
@@ -22,7 +22,7 @@ export default function EventProvider({children}){
         setEditEvent(null)
     }
 
-    const sortedEvents = [...events].sort(
+    const sortedEvents = [...currentUserEvents].sort(
         (a, b) => new Date(a.start) - new Date(b.start)
     )
 

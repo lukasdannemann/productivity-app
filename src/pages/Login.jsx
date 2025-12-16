@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./LoginSignup.module.css"
+import { UserContext } from "../context/UserContext"
 
 export default function Login(){
-const [email, setEmail] = useState("")
+const {loginUser} = useContext(UserContext)
+
+const [username, setUsername] = useState("")
 const [password, setPassword] = useState("")
 const [error, setError] = useState("")
 const navigate = useNavigate()
@@ -14,15 +17,16 @@ function handleSubmit(e) {
     setError("");
 
     // lösning för att ignorera whitespace och case-sensitivity vid inloggning
-    const emailOption = email.trim().toLowerCase();
+    const result = loginUser(username, password)
 
-    if (!emailOption || !password) {
-        setError("Please fill in email and password.")
-        return;
+    if (result.success) {
+        navigate("/dashboard");
+    } else{
+        setError(result.message)
+        return ;
     }
-
+    
     //inloggningslogik här senare
-    navigate("/dashboard");
 }
 
 
@@ -35,14 +39,14 @@ return (
         
             <div className={styles.inputGroup}>
             <label className={styles.label}>
-                Email
+                Username
             <input className={styles.emailInput}
-                type="email" 
-                value={email} 
-                placeholder="Your@email.com"
-                onChange={(e) => setEmail(e.target.value)} 
+                type="text" 
+                value={username} 
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)} 
                 required 
-                autoComplete="email"
+                autoComplete="username"
             />
         </label>
 
@@ -61,7 +65,7 @@ return (
 
         {error && <p className={styles.error}>{error}</p>}
 
-        <button className={styles.button} type="submit">Log in</button>
+        <button className={styles.button}>Log in</button>
         <div className={styles.divider} />
         <p>New to the sanctuary? {""}
             <span className={styles.link} onClick={() => navigate("/signup")}>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext()
 
@@ -8,40 +8,61 @@ export default function UserProvider({children}){
         return JSON.parse(localStorage.getItem('users')) || []
     })
 
-    const [user, setUser] = useState(() => {
-        return JSON.parse(sessionStorage.getItem('user')) || null
+    const [currentUser, setCurrentUser] = useState(() => {
+        return JSON.parse(sessionStorage.getItem('currentUser')) || null
     })
+
+    useEffect(() => {
+        localStorage.setItem('users', JSON.stringify(users))
+    }, [users])
+
+    useEffect(() => {
+        if (currentUser){
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
+        } else{
+            sessionStorage.clear()
+        }
+    }, [currentUser])
 
 
     const registerUser = (username, password) => {
 
-        newUser = {
+        if (!username || !password){
+            return {success: false, message: 'Please fill in all fields'};
+        }
+
+        if (users.find(user => user.username === username)){
+            return {success: false, message: 'Username already exists'}
+        }
+
+        const newUser = {
             id: Date.now().toString(),
             username,
             password
         }
-
-        setUsers(...users, newUser)
-        localStorage.setItem('users', JSON.stringify(users))
-    }
+            
+        setUsers([...users, newUser])
+        return {success: true, user: newUser}
+        }
 
     const loginUser = (username, password) => {
         const foundUser = users.find(user => 
             user.username === username && user.password === password
         )
-        setUser(foundUser)
-        sessionStorage.setItem('user', JSON.stringify(foundUser))
-        return true;
+        if (!foundUser){
+            return {success: false, message: 'Wrong username or password'}
+        }
+        setCurrentUser(foundUser)
+        return {success: true, user: foundUser};
     }
 
     const logoutUser = () => {
-        setUser(null)
-        sessionStorage.removeItem('user')
+        setCurrentUser(null)
     }
 
     
     return(
-        <UserContext value={{users, user, registerUser, loginUser, logoutUser}}>
+        <UserContext value={{users, currentUser, registerUser, loginUser, logoutUser}}>
             {children}
         </UserContext>
     )
