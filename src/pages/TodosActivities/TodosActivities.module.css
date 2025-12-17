@@ -1,0 +1,45 @@
+.page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px;
+  }
+  
+  .header {
+    width: 100%;
+    max-width: 760px;
+    margin-bottom: 18px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+  }
+  
+  .main {
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* återanvänd din knappklass men gör den centrerad */
+  .newTodoButton {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    align-self: center;
+  }
+  
+  .popupText {
+    color: white;
+    margin-top: 12px;
+    text-align: center;
+  }
+  

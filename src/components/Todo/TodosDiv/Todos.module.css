@@ -1,4 +1,7 @@
+
 .list {
+  width: 100%;
+  max-width: 900px;
   margin-top: 16px;
   padding-left: 0;
   list-style: none;
@@ -9,6 +12,7 @@
 }
 
 .listItem {
+  
   padding: 14px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
@@ -40,13 +44,7 @@
   gap: 8px;
 }
 
-.top {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
+.top,
 .row {
   display: flex;
   gap: 10px;
@@ -68,11 +66,17 @@
   margin-top: 6px;
 }
 
-.button {
+.button,
+.smallButton {
   border: none;
   border-radius: 10px;
   padding: 8px 10px;
   cursor: pointer;
+}
+
+.button:hover,
+.smallButton:hover {
+  opacity: 0.9;
 }
 
 .delete {
@@ -82,4 +86,35 @@
   cursor: pointer;
   background: rgba(255, 80, 80, 0.25);
   color: white;
+}
+
+.delete:hover {
+  opacity: 0.9;
+}
+
+.controls {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.select {
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.popupText {
+  color: white;
+  margin-top: 12px;
 }

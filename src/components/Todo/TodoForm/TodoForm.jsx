@@ -7,7 +7,7 @@ export default function TodoForm() {
   
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Övrigt");
+  const [category, setCategory] = useState("Other");
   const [deadline, setDeadline] = useState("");
   const [timeEstimateMinutes, setTimeEstimateMinutes] = useState("");
 
@@ -16,7 +16,7 @@ export default function TodoForm() {
     if (!editingTodo) return;
     setTitle(editingTodo.title ?? "");
     setDescription(editingTodo.description ?? "");
-    setCategory(editingTodo.category ?? "Övrigt");
+    setCategory(editingTodo.category ?? "Other");
     setDeadline(editingTodo.deadline ?? "");
     setTimeEstimateMinutes(String(editingTodo.timeEstimateMinutes ?? ""));
 }, [editingTodo]);
@@ -39,7 +39,7 @@ export default function TodoForm() {
 
       setTitle("");
       setDescription("");
-      setCategory("Övrigt");
+      setCategory("Other");
       setDeadline("");
       setTimeEstimateMinutes("");
     };
@@ -73,13 +73,15 @@ export default function TodoForm() {
         <select
           className={styles.input}
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="Övrigt">Other</option>
-          <option value="Hälsa">Health</option>
-          <option value="Hushåll">Household</option>
-          <option value="Jobb">Work</option>
-          <option value="Nöje">Leisure</option>
+          onChange={(e) => setCategory(e.target.value)}>
+            
+          <option value="Other">Other</option>
+          <option value="Health">Health</option>
+          <option value="Household">Household</option>
+          <option value="Work">Work</option>
+          <option value="Leisure">Leisure</option>
+          <option value="Errands">Errands</option>
+          <option value="Study">Study</option>
         </select>
       </label>
 
@@ -109,8 +111,7 @@ export default function TodoForm() {
         <button
           type="button"
           onClick={cancelForm}
-          className={styles.cancelBtn}
-        >
+          className={styles.cancelBtn}>
           Cancel
         </button>
 

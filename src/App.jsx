@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import TodosActivities from "./pages/TodosActivities";
+import TodosActivities from "./pages/TodosActivities/TodosActivities";
 import Habits from "./pages/Habits";
 import EventPlanner from "./pages/EventPlanner";
 import Login from "./pages/Login";
