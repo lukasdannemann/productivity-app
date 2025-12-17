@@ -6,8 +6,6 @@ import Habits from "./pages/habits/Habits";
 import EventPlanner from "./pages/EventPlanner";
 import Login from "./pages/Login";
 import ErrorPage from "./pages/errorpage/ErrorPage";
-import Navigation from "./components/navigation/Navigation";
-import styles from "./App.module.css";
 import SignUp from "./pages/SignUp";
 import EventProvider from "./context/EventContext";
 import { HabitsProvider } from "./context/HabitsContext";
@@ -17,9 +15,6 @@ function App() {
     <>
       <EventProvider>
         <HabitsProvider>
-          <div className={styles.layout}>
-            <Navigation />
-            <main className={styles.content}>
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
@@ -29,8 +24,6 @@ function App() {
                 <Route path="/dashboard" element={<Home />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
-            </main>
-          </div>
         </HabitsProvider>
       </EventProvider>
     </>

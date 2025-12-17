@@ -43,3 +43,14 @@ button{
 button:hover {
   cursor: pointer
 }
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content {
+  margin-left: 280px;
+  padding: var(--spacing-lg);
+  width: 100%;
+}
