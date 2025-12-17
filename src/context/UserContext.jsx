@@ -20,7 +20,7 @@ export default function UserProvider({children}){
         if (currentUser){
             sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
         } else{
-            sessionStorage.clear()
+            sessionStorage.removeItem('currentUser')
         }
     }, [currentUser])
 

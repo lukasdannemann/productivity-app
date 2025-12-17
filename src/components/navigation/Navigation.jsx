@@ -5,14 +5,20 @@ import eventsIcon from "../../assets/icons8-calendar-75.png";
 import dashboardIcon from "../../assets/icons8-dashboard-96.png";
 import habitsIcon from "../../assets/icons8-sparkles-60.png";
 import todoIcon from "../../assets/icons8-checkbox-50.png";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
   const location = useLocation();
 
+  const {logoutUser} = useContext(UserContext)
   // Dölj navbar på login-sidan
   if (location.pathname === "/") {
     return null;
   }
+
+  const navigate = useNavigate()
 
   const navItems = [
     { path: "/dashboard", label: "Dashboard", img: dashboardIcon },
@@ -50,9 +56,7 @@ function Navigation() {
       </ul>
 
       <div className={styles.navFooter}>
-        <Link to="/" className={styles.navLink}>
-          Log out
-        </Link>
+        <button onClick={() => {logoutUser(); navigate('/' )}} ></button>
       </div>
     </nav>
   );
