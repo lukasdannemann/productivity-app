@@ -36,6 +36,16 @@ const EventForm = () => {
     const addEvent = (e) => {
         e.preventDefault()
         console.log(events)
+        
+        if (start >= end ){
+            alert('You need to pick a valid date')
+            return;
+        }
+
+        if (!title || !description || !start || !end){
+            alert('You need to fill all the empty fields')
+            return;
+        }
 
         if(editEvent){
 
@@ -61,16 +71,6 @@ const EventForm = () => {
             description,
             start,
             end
-        }
-
-        if (start >= end ){
-            alert('You need to pick a valid date')
-            return;
-        }
-
-        if (!title || !description || !start || !end){
-            alert('You need to fill all the empty fields')
-            return;
         }
 
         setEvents([...events, newEvent])

@@ -42,6 +42,7 @@ export default function UserProvider({children}){
         }
             
         setUsers([...users, newUser])
+        setCurrentUser(newUser)
         return {success: true, user: newUser}
         }
 

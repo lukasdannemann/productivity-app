@@ -17,7 +17,6 @@ const {registerUser, loginUser} = useContext(UserContext)
     const result = registerUser(username, password)
 
     if(result.success){
-      registerUser(username, password)
       navigate("/dashboard");
     }else{
       setError(result.message)
