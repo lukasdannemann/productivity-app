@@ -1,0 +1,24 @@
+.categories {
+    width: 100%;
+    margin-top: 12px;
+    color: white;
+  }
+  
+  .categoryList {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px; 
+  }
+  
+  .categoryItem {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  
+  .categoryButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
