@@ -2,7 +2,6 @@
 .habits {
   text-align: left;
   font-family: 'Inter', sans-serif;
-  color: var(--color-text);
   padding: 2rem;
   width: 100%; /* Full width */
   margin: 0; /* Remove auto centering */
@@ -111,8 +110,7 @@
 
 /* Habit icon container */
 .habitIcn {
-  width: 5rem;
-  height: 5rem;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,7 +118,7 @@
 }
 
 .habitIcn img {
-  width: 60%;
+  width: 100%;
   height: auto;
 }
 

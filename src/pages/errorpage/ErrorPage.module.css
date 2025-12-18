@@ -6,17 +6,14 @@
 .content img {
     height: 200px;
     margin-bottom: 4rem;
-    animation: spin 6s linear infinite;
-    filter: drop-shadow(0 4px 8px var(--color-primary));
+    animation: spin 18s linear infinite;
+    filter: drop-shadow(0 1px 4px var(--navbar-text));
 }
 
 .content button {
-    margin-top: 2rem;
-    background-color: var(--color-primary);
-    border: none;
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    border-radius: 8px;
+    margin-top: 4rem;
+    background: var(--navbar-text);
+    color: black;
 }
 
 @keyframes spin {
@@ -26,14 +23,4 @@
     to {
         transform: rotate(360deg);
     }
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
 }

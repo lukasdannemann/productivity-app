@@ -6,10 +6,10 @@ export default function ErrorPage() {
   return (
     <div className={styles.content}>
       <img src={errorIcon} alt="" />
-      <h1>Oops! It looks like this page has gone missing.</h1>
-      <button>
-        <Link to="/dashboard">Back to start</Link>
-      </button>
+      <h1>Oops! Can't find the page you are looking for.</h1>
+      <Link to="/dashboard"><button>
+        Back to start
+      </button></Link>
     </div>
   );
 }

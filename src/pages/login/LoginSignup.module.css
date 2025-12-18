@@ -16,7 +16,7 @@
   box-shadow: 0 4px 12px rgba(0, 97, 74, 0.15);
 }
 
-img {
+.container img {
   width: 50%;
   display: block;
   margin: 0 auto;
@@ -107,7 +107,7 @@ img {
   color: var(--navbar-text);
 }
 
-p {
+.container p {
   text-align: center;
   color: var(--color-text-2);
   font-family: 'Space Grotesk', sans-serif;

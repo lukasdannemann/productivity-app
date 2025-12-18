@@ -1,62 +1,83 @@
-import { Link, useLocation } from "react-router-dom";
-import styles from "./Navigation.module.css";
-import Logo from "../../assets/shamanLogo.grey.png";
-import eventsIcon from "../../assets/icons8-calendar-75.png";
-import dashboardIcon from "../../assets/icons8-dashboard-96.png";
-import habitsIcon from "../../assets/icons8-sparkles-60.png";
-import todoIcon from "../../assets/icons8-checkbox-50.png";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import styles from "./Navigation.module.css";
+import Logo from "../../assets/shamanLogo.grey.png";
 
+// Navigation configuration
+const NAV_ITEMS = [
+  { path: "/dashboard", label: "Dashboard"},
+  { path: "/todos", label: "Todos"},
+  { path: "/habits", label: "Habits"},
+  { path: "/events", label: "Event planner"},
+];
+
+// Separate component for navigation link
+function NavLink({ path, label, isActive }) {
+  return (
+    <Link
+      to={path}
+      className={`${styles.navLink} ${isActive ? styles.active : ""}`}
+    >
+      <span className={styles.label}>{label}</span>
+    </Link>
+  );
+}
+
+// Separate component for logo section
+function NavHeader() {
+  return (
+    <div className={styles.logoContainer}>
+      <Link to="/dashboard" className={styles.logoLink}>
+        <img
+          src={Logo}
+          alt="Logo representing a old shaman sitting down and meditating"
+          className={styles.logo}
+        />
+      </Link>
+    </div>
+  );
+}
+
+// Separate component for footer
+function NavFooter({ onLogout }) {
+  return (
+    <div className={styles.navFooter}>
+      <button onClick={onLogout} className={styles.logoutButton}>
+        Logout
+      </button>
+    </div>
+  );
+}
+
+// Main Navigation component
 function Navigation() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logoutUser } = useContext(UserContext);
 
-  const {logoutUser} = useContext(UserContext)
-  // Dölj navbar på login-sidan
-  if (location.pathname === "/") {
-    return null;
-  }
-
-  const navigate = useNavigate()
-
-  const navItems = [
-    { path: "/dashboard", label: "Dashboard", img: dashboardIcon },
-    { path: "/todos", label: "Todos", img: todoIcon },
-    { path: "/habits", label: "Habits", img: habitsIcon },
-    { path: "/events", label: "Event planner", img: eventsIcon },
-  ];
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/");
+  };
 
   return (
     <nav className={styles.sidebar}>
-      <div className={styles.logoDiv}>
-        <Link to="/dashboard">
-          <img
-            src={Logo}
-            alt="Logo representing a old shaman sitting down and meditating"
-            width={100}
-          />
-        </Link>
-      </div>
+      <NavHeader />
+
       <ul className={styles.navList}>
-        {navItems.map((item) => (
-          <li key={item.path}>
-            <Link
-              to={item.path}
-              className={`${styles.navLink} ${
-                location.pathname === item.path ? styles.active : ""
-              }`}
-            >
-              <img src={item.img} alt="" className={styles.icons}/>
-              <span>{item.label}</span>
-            </Link>
+        {NAV_ITEMS.map((item) => (
+          <li key={item.path} className={styles.navItem}>
+            <NavLink
+              path={item.path}
+              label={item.label}
+              isActive={location.pathname === item.path}
+            />
           </li>
         ))}
       </ul>
 
-      <div className={styles.navFooter}>
-        <button onClick={() => {logoutUser(); navigate('/' )}} >Logout</button>
-      </div>
+      <NavFooter onLogout={handleLogout} />
     </nav>
   );
 }

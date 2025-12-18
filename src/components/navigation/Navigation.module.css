@@ -1,9 +1,116 @@
 .sidebar {
-  width: 280px;
-  background: var(--color-navbar);
   position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
   height: 100vh;
+  background: var(--color-navbar);
   display: flex;
   flex-direction: column;
-  padding: 2rem 0;
+  z-index: 100;
+}
+
+.logoContainer {
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logoLink {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.logoLink:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+  display: block;
+}
+
+.navList {
+  flex: 1;
+  padding: var(--spacing-md) 0;
+  overflow-y: auto;
+}
+
+.navItem {
+  margin: 1rem 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.navLink:hover {
+  background: var(--navbar-glass);
+  border-left-color: var(--navbar-text);
+}
+
+.navLink.active {
+  background: var(--navbar-glass);
+  border-left-color: var(--navbar-text);
+  color: var(--navbar-text);
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.navFooter {
+  padding: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logoutButton {
+  width: 100%;
+  background: var(--navbar-text);
+  border: none;
+  color: black;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(80, 255, 188, 0.3);
+}
+
+.logoutButton:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar styling for nav list */
+.navList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.navList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.navList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
