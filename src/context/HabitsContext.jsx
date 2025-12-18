@@ -4,9 +4,21 @@ import { UserContext } from "./UserContext";
 export const HabitsContext = createContext();
 
 export function HabitsProvider({ children }) {
-  const [habits, setHabits] = useState([]);
   const {currentUser} = useContext(UserContext)
 
+  const [habits, setHabits] = useState(() => {
+    const storedUser = JSON.parse(sessionStorage.getItem('currentUser')) ||
+    JSON.parse(localStorage.getItem('currentUser'))
+
+    if(storedUser){
+      const allHabits = JSON.parse(localStorage.getItem('habits')) || {};
+      return allHabits[storedUser.id] || [];
+    }
+    return []
+  });
+
+  //Hämtar habits från localStorage, skapar nytt objekt med alla habits av currentUser.id
+  //Detta händer varje gång [currentUser] uppdateras.
   useEffect(() => {
         if(currentUser){
             const allHabits = JSON.parse(localStorage.getItem('habits')) || {}
@@ -17,6 +29,8 @@ export function HabitsProvider({ children }) {
         }
     }, [currentUser])
 
+  //Hämtar habits från localStorage, ersätter habits med den specifika användarens habits och lägger
+  //till i localStorage. Detta händer varje gång habits och currentUser uppdateras
   useEffect(() => {
         if (currentUser && habits.length >= 0){
 
