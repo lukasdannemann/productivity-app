@@ -10,7 +10,7 @@ export default function UserProvider({children}){
 
     const [currentUser, setCurrentUser] = useState(() => {
         return JSON.parse(sessionStorage.getItem('currentUser')) || 
-        JSON.parse(sessionStorage.getItem('currentUser')) || null
+        JSON.parse(localStorage.getItem('currentUser')) || null
     })
 
     useEffect(() => {
