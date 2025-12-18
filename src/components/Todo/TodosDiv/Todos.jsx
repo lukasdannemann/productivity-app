@@ -29,7 +29,7 @@ import styles from "./Todos.module.css";
       <>
         {!showForm && todos.length > 0 && (
           <>
-            <div className={styles.controls}>
+            <div className="controls">
               <select
                 value={filterStatus}
                 className={styles.select}
@@ -39,15 +39,16 @@ import styles from "./Todos.module.css";
                 <option value="active">Not completed</option>
                 <option value="done">Completed</option>
               </select>
-  
+
+              <label htmlFor="filter">Sort by: </label>
               <select
                 value={sort}
                 className={styles.select}
                 onChange={(e) => setSort(e.target.value)}>
 
-                <option value="deadline">Sort: deadline</option>
-                <option value="time">Sort: time estimate</option>
-                <option value="status">Sort: status</option>
+                <option value="deadline">Deadline</option>
+                <option value="time">Time estimate</option>
+                <option value="status">Status</option>
               </select>
   
               <select

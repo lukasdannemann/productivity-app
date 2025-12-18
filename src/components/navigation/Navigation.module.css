@@ -77,24 +77,36 @@
 
 .logoutButton {
   width: 100%;
-  background: var(--navbar-text);
-  border: none;
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--navbar-text);
+  color: var(--navbar-text);
   border-radius: var(--radius-md);
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
+  font-family: 'Space Grotesk', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .logoutButton:hover {
+  background: rgba(80, 255, 188, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(80, 255, 188, 0.3);
 }
 
 .logoutButton:active {
   transform: translateY(0);
+}
+
+.logOut {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* Scrollbar styling for nav list */

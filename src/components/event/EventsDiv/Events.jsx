@@ -17,13 +17,16 @@ const Events = () => {
     const displayedEvents = getFilteredEvents()
     return (
         <>
-        { events.length > 0 &&
-        <select value={filter} className={styles.filterList} onChange={(e) => setFilter(e.target.value)}>
-                <option value="">Filter</option>
+        { events.length > 0 && (
+        <div className="controls">
+            <label htmlFor="filter">Filter: </label>
+            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
                 <option value="all">Show all</option>
                 <option value="past">Past events</option>
                 <option value="upcoming">Upcoming events</option>
-            </select>}
+            </select>
+        </div>
+        )}
 
         <div className={styles.eventsGrid}>
             
@@ -33,11 +36,11 @@ const Events = () => {
                 <div key={event.id} className={`${styles.eventsDiv} ${isPastEvent(event) ? styles.past : ''}`}>
                     <h3>{event.title}</h3>
                     <ul>
-                        <li>Description: {event.description}</li>
-                        <li>Starts: {new Date(event.start).toLocaleDateString('sv-SE')} {' '}
+                        <li className={styles.description}>{event.description}</li>
+                        <li className={styles.time}><strong>Starts:</strong> {new Date(event.start).toLocaleDateString('sv-SE')} {' '}
                             {new Date(event.start).toLocaleTimeString('sv-SE',
                                 { hour: '2-digit', minute: '2-digit' })}</li>
-                        <li>Ends: {new Date(event.end).toLocaleDateString('sv-SE')} {' '}
+                        <li className={styles.time}><strong>Ends:</strong> {new Date(event.end).toLocaleDateString('sv-SE')} {' '}
                             {new Date(event.end).toLocaleTimeString('sv-SE',
                                 { hour: '2-digit', minute: '2-digit' })}</li>
                     </ul>

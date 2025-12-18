@@ -1,12 +1,3 @@
-/* Container for the habits section */
-.habits {
-  text-align: left;
-  font-family: 'Inter', sans-serif;
-  padding: 2rem;
-  width: 100%; /* Full width */
-  margin: 0; /* Remove auto centering */
-}
-
 /* Section header */
 .habits h2 {
   font-size: 2.25rem;
@@ -15,53 +6,8 @@
   margin-bottom: 1.5rem;
 }
 
-/* Controls container (filter/sort) */
-.controls {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 1rem 1.5rem;
-  border-radius: 14px;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(5px);
-  width: 100%; /* Full width */
-  box-sizing: border-box; /* Include padding in width */
-}
-
-/* Individual control groups */
-.controls div {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-/* Labels in controls */
-.controls label {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-/* Select inputs in controls */
-.controls select {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.95rem;
-  background-color: rgb(34, 34, 34);
-  color: var(--color-text);
-  border: 1px solid var(--color-primary);
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.controls select:hover,
-.controls select:focus {
-  border-color: var(--color-accent);
-  outline: none;
-}
-
 /* Habit cards grid: 3 cards per row on desktop */
+
 .habitCards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
