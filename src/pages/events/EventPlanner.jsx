@@ -40,7 +40,7 @@ export default function EventPlanner() {
                 </div>
               </>
             ) : (
-              <button onClick={openForm}>
+              <button onClick={openForm} className="addButton">
                 Create new event
               </button>
             )}

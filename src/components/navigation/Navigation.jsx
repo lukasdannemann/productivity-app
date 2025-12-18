@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import styles from "./Navigation.module.css";
 import Logo from "../../assets/shamanLogo.grey.png";
+import LogOutIcn from "../../assets/icons8-log-out-100.png";
 
 // Navigation configuration
 const NAV_ITEMS = [
@@ -44,7 +45,12 @@ function NavFooter({ onLogout }) {
   return (
     <div className={styles.navFooter}>
       <button onClick={onLogout} className={styles.logoutButton}>
-        Logout
+        <img
+          src={LogOutIcn}
+          alt="Log out icon"
+          className={styles.logOut}
+        />
+        Log out
       </button>
     </div>
   );

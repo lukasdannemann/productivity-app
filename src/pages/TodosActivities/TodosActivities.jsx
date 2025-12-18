@@ -41,7 +41,7 @@ export default function TodosActivities() {
               </div>
             </>
           ) : (
-            <button onClick={openFormForNewTodo}>Add todo</button>
+            <button onClick={openFormForNewTodo} className="addButton">Add todo</button>
           )}
         </div>
 

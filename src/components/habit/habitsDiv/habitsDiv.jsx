@@ -65,7 +65,7 @@ export default function HabitsDiv() {
       <h2>Your Habits</h2>
 
       {/* FILTERING */}
-      <div className={styles.controls}>
+      <div className="controls">
         <div>
           <label htmlFor="filter">Filter by priority: </label>
           <select

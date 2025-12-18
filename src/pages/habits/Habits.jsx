@@ -30,7 +30,7 @@ export default function Habits() {
                 </div>
               </>
             ) : (
-              <button onClick={() => setShow(true)}>Add a new Habit</button>
+              <button onClick={() => setShow(true)} className="addButton">Add a new Habit</button>
             )}
           </div>
 
