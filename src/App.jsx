@@ -11,6 +11,7 @@ import EventProvider from "./context/EventContext";
 import { HabitsProvider } from "./context/HabitsContext";
 import UserProvider from "./context/UserContext";
 import TodoProvider from "./context/TodoContext";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -22,11 +23,11 @@ function App() {
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/todos" element={<TodosActivities />} />
-                <Route path="/habits" element={<Habits />} />
-                <Route path="/events" element={<EventPlanner />} />
-                <Route path="/dashboard" element={<Home />} />
-                <Route path="*" element={<ErrorPage />} />
+                <Route path="/todos" element={<PrivateRoute><TodosActivities /></PrivateRoute>} />
+                <Route path="/habits" element={<PrivateRoute><Habits /></PrivateRoute>} />
+                <Route path="/events" element={<PrivateRoute><EventPlanner /></PrivateRoute>} />
+                <Route path="/dashboard" element={<PrivateRoute><Home /></PrivateRoute>} />
+                <Route path="*" element={<PrivateRoute><ErrorPage /></PrivateRoute>} />
               </Routes>
               </TodoProvider>
         </HabitsProvider>
