@@ -8,7 +8,16 @@ const uid = () => Date.now();
 export default function TodoProvider ({ children }) {
   const {currentUser} = useContext(UserContext)
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const storedUser = JSON.parse(sessionStorage.getItem('currentUser')) ||
+    JSON.parse(localStorage.getItem('currentUser'))
+
+    if(storedUser){
+      const allTodos = JSON.parse(localStorage.getItem('todos')) || {};
+      return allTodos[storedUser.id] || [];
+    }
+    return []
+  });
 
   const [showForm, setShowForm] = useState(false);
 
