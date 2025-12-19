@@ -4,7 +4,7 @@ import styles from "./habitsDiv.module.css";
 import Repetition from "./repetiton";
 
 export default function HabitsDiv() {
-  const { habits, updateRepetitions } = useContext(HabitsContext);
+  const { habits, updateRepetitions, deleteHabit } = useContext(HabitsContext);
 
   // State for filtering and sorting
   const [filterPriority, setFilterPriority] = useState("All");
@@ -23,6 +23,12 @@ export default function HabitsDiv() {
 
   const handleReset = (id) => {
     updateRepetitions(id, 0);
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this habit?")) {
+      deleteHabit(id);
+    }
   };
 
   // FILTERING - Filtering on priority
@@ -125,6 +131,13 @@ export default function HabitsDiv() {
                 onDecrement={() => handleDecrement(habit.id, habit.repetitions)}
                 onReset={() => handleReset(habit.id)}
               />
+              <button
+                className={styles.deleteBtn}
+                onClick={() => handleDelete(habit.id)}
+                aria-label="Delete habit"
+              >
+                Remove habit
+              </button>
             </div>
           ))
         )}

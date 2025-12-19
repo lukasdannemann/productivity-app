@@ -45,13 +45,12 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .habitCard:hover {
-  transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  border-color: var(--color-primary);
 }
 
 /* Habit icon container */
@@ -99,4 +98,24 @@
 .priority.Low {
   background: rgba(80, 200, 120, 0.15);
   color: #4ade80;
+}
+
+/* Delete button */
+.deleteBtn {
+  background: transparent;
+  border: none;
+  color:  rgba(255, 80, 80, 0.5);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+  opacity: 1;
+  background: rgba(255, 80, 80, 0.25);
+  border-color: rgba(255, 80, 80, 0.5);
+  transform: scale(1.1);
 }
