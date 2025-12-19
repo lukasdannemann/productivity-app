@@ -17,6 +17,7 @@ const Events = () => {
     const displayedEvents = getFilteredEvents()
     return (
         <>
+        <div className={styles.filterDiv}>
         { events.length > 0 &&
         <select value={filter} className={styles.filterList} onChange={(e) => setFilter(e.target.value)}>
                 <option value="">Filter</option>
@@ -24,7 +25,7 @@ const Events = () => {
                 <option value="past">Past events</option>
                 <option value="upcoming">Upcoming events</option>
             </select>}
-
+        </div>
         <div className={styles.eventsGrid}>
             
             { displayedEvents.length > 0 ? (
@@ -41,7 +42,7 @@ const Events = () => {
                             {new Date(event.end).toLocaleTimeString('sv-SE',
                                 { hour: '2-digit', minute: '2-digit' })}</li>
                     </ul>
-                    <div>
+                    <div className={styles.buttons}>
                         <button onClick={() => startEditing(event)}>Edit</button>
                         <button onClick={() => deleteEvent(event.id)}>Delete</button>
                     </div>
