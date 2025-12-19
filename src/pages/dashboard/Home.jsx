@@ -76,7 +76,7 @@ export default function Home() {
         <img src={planet} alt="planet drawing" className={styles.planet}/>
         {quote && (
           <div className={styles.quote}>
-            <h2>{quote.quote}</h2> — <p>{quote.author}</p>
+            <h2>" {quote.quote} "</h2> — <p>{quote.author}</p>
           </div>
         )}
 

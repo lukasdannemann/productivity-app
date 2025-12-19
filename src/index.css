@@ -55,19 +55,20 @@ button{
   font-size: 1.4rem;
 }
 
-.addButton{
-  background: var(--gradient-title);
-  border: none;
-  color: var(--color-text);
-  border-radius: var(--radius-md);
-  padding: 1rem 3rem;
-  font-size: 1.4rem;
-  transition: ease-in-out 0.1s;
+.addButton {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Space Grotesk';
 }
 
 .addButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.07);
   cursor: pointer;
-  box-shadow: 0 4px 12px var(--hover-button);
+}
+
+.addButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
 }
 
 .layout {
