@@ -60,8 +60,12 @@ export function HabitsProvider({ children }) {
     );
   };
 
+  const deleteHabit = (id) => {
+    setHabits(habits.filter((h) => h.id !== id));
+  };
+
   return (
-    <HabitsContext.Provider value={{ habits, addHabit, updateRepetitions }}>
+    <HabitsContext.Provider value={{ habits, addHabit, updateRepetitions, deleteHabit }}>
       {children}
     </HabitsContext.Provider>
   );
