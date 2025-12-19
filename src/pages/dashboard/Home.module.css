@@ -5,11 +5,12 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  text-align: center;
 }
 
 .quote p {
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .welcome {

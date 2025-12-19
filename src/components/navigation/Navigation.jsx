@@ -36,6 +36,7 @@ function NavHeader() {
           className={styles.logo}
         />
       </Link>
+      <header className={styles.navTitle}>HaloMind</header>
     </div>
   );
 }
