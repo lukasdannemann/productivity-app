@@ -45,7 +45,7 @@ export default function TodosActivities() {
           )}
         </div>
 
-        <div>
+        <div className="contentDiv">
           {!showForm &&
             (todos.length < 1 ? (
               <p className="noData">Created todos will show here!</p>

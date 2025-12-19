@@ -34,7 +34,7 @@ export default function Habits() {
             )}
           </div>
 
-          <div>
+          <div className="contentDiv">
             <HabitsDiv />
           </div>
         </main>

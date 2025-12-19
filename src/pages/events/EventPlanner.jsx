@@ -46,7 +46,7 @@ export default function EventPlanner() {
             )}
             </div>
 
-            <div>
+            <div className='contentDiv'>
             {!showForm && (
               events.length < 1 ? (
                 <p className='noData'>Created events will show here!</p>

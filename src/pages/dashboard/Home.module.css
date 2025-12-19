@@ -34,10 +34,10 @@
 
 .dashboard{
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 
   /* viktigt pga .content align-items:center */
   align-items: stretch;

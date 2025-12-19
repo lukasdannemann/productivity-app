@@ -1,11 +1,10 @@
 
 .list {
   width: 100%;
-  max-width: 900px;
-  margin-top: 16px;
-  padding-left: 0;
+  max-width: 100%;
+  margin-top: 1rem;
   list-style: none;
-  color: white;
+  color: var(--color-text);
 
   display: grid;
   gap: 12px;
@@ -24,17 +23,19 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 1.85rem;
 }
 
 .done {
-  font-size: 18px;
+  font-size: 1.85rem;
+  color: var(--color-text-2);
   text-decoration: line-through;
   opacity: 0.7;
 }
 
 .text {
   margin: 0;
+  font-size: 1.2rem;
   opacity: 0.9;
 }
 
