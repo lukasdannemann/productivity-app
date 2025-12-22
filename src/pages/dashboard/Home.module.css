@@ -45,7 +45,7 @@
 
 .planet:hover {
   transform: translateY(-15px) scale(1.05);
-  filter: drop-shadow(0 15px 35px rgba(80, 140, 255, 0.6));
+  filter: drop-shadow(0 15px 35px rgba(80, 140, 255, 0.2));
 }
 
 .dashboard{
