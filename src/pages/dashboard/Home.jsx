@@ -29,12 +29,23 @@ export default function Home() {
 
   useEffect(() => {
     const fetchQuote = async () => {
+      // Check if quote already exists in sessionStorage
+      const storedQuote = sessionStorage.getItem("dailyQuote");
+
+      if (storedQuote) {
+        // Use stored quote if available
+        setQuote(JSON.parse(storedQuote));
+      } else {
+        // Fetch new quote only if not in session
       try {
         const res = await fetch("https://dummyjson.com/quotes/random");
         const data = await res.json();
         setQuote(data);
+        // Store the quote in sessionStorage
+          sessionStorage.setItem("dailyQuote", JSON.stringify(data));
       } catch (error) {
         console.error("Failed to fetch quote", error);
+        }
       }
     };
 

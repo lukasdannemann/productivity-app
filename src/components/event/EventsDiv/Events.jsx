@@ -44,7 +44,7 @@ const Events = () => {
                             {new Date(event.end).toLocaleTimeString('sv-SE',
                                 { hour: '2-digit', minute: '2-digit' })}</li>
                     </ul>
-                    <div>
+                    <div className={styles.eventButtons}>
                         <button onClick={() => startEditing(event)}>Edit</button>
                         <button onClick={() => deleteEvent(event.id)}>Delete</button>
                     </div>
