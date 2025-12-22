@@ -48,7 +48,7 @@ return (
                 placeholder="meditator123"
                 onChange={(e) => setUsername(e.target.value)} 
                 required 
-                autoComplete="username"
+                autoComplete="off"
             />
         </label>
 
@@ -60,7 +60,7 @@ return (
                 placeholder="●●●●●●●●"
                 onChange={(e) => setPassword(e.target.value)} 
                 required
-                autoComplete="current-password"
+                autoComplete="new-password"
             />
         </label>
     </div>

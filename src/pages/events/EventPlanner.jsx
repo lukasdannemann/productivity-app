@@ -1,7 +1,7 @@
-import { useContext } from 'react'
-import { EventContext } from '../../context/EventContext'
-import EventForm from '../../components/event/eventForm/EventForm'
-import Events from '../../components/event/EventsDiv/Events'
+import { useContext } from "react";
+import { EventContext } from "../../context/EventContext";
+import EventForm from "../../components/event/eventForm/EventForm";
+import Events from "../../components/event/EventsDiv/Events";
 import Navigation from "../../components/navigation/Navigation";
 
 export default function EventPlanner() {
@@ -21,39 +21,40 @@ export default function EventPlanner() {
         <Navigation />
         <main className="content">
           <header>
-            <h1>Event Planner</h1>
+            <h1 className="page-heading">Event Planner</h1>
             {/*Eventuell räkning av events kan läggas här*/}
           </header>
-          
-          <div>
-            {showForm ? (
-              <>
-                {/* OVERLAY */}
-                <div className="overlay" onClick={closeForm}></div>
 
-                {/* MODAL */}
-                <div className="modal">
-                  <button className="closeBtn" onClick={closeForm}>
-                    ✕
-                  </button>
-                  <EventForm />
-                </div>
-              </>
-            ) : (
-              <button onClick={openForm} className="addButton">
-                Create new event
-              </button>
-            )}
+          <div className="contentDiv">
+            <div>
+              {showForm ? (
+                <>
+                  {/* OVERLAY */}
+                  <div className="overlay" onClick={closeForm}></div>
+
+                  {/* MODAL */}
+                  <div className="modal">
+                    <button className="closeBtn" onClick={closeForm}>
+                      ✕
+                    </button>
+                    <EventForm />
+                  </div>
+                </>
+              ) : (
+                <button onClick={openForm} className="addButton">
+                  Create new event
+                </button>
+              )}
             </div>
 
-            <div className='contentDiv'>
-            {!showForm && (
-              events.length < 1 ? (
-                <p className='noData'>Created events will show here!</p>
-              ) : (
-                <Events />
-              )
-            )}
+            <div className="showDiv">
+              {!showForm &&
+                (events.length < 1 ? (
+                  <p className="noData">Created events will show here!</p>
+                ) : (
+                  <Events />
+                ))}
+            </div>
           </div>
         </main>
       </div>

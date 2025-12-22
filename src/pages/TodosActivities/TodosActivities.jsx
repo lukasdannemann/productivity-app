@@ -22,10 +22,11 @@ export default function TodosActivities() {
       <Navigation />
       <main className="content">
         <header>
-          <h1 className={styles.title}>Todos & Activities</h1>
+          <h1 className="page-heading">Todos & Activities</h1>
           {/*Eventuell räkning av todos kan läggas här*/}
         </header>
 
+        <div className="contentDiv">
         <div>
           {showForm ? (
             <>
@@ -45,13 +46,14 @@ export default function TodosActivities() {
           )}
         </div>
 
-        <div className="contentDiv">
+        <div className="showDiv">
           {!showForm &&
             (todos.length < 1 ? (
               <p className="noData">Created todos will show here!</p>
             ) : (
               <Todos />
             ))}
+        </div>
         </div>
       </main>
     </div>
