@@ -1,3 +1,10 @@
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 .quote {
   color: var(--color-primary);
   display: flex;
@@ -14,9 +21,10 @@
 }
 
 .welcome {
-  font-size: 3rem;
+  font-size: 4rem;
   width: 100%;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .username {
@@ -30,6 +38,14 @@
   display: block;
   margin: 0 auto;
   max-width: 200px;
+  margin-bottom: 2rem;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  cursor: pointer;
+}
+
+.planet:hover {
+  transform: translateY(-15px) scale(1.05);
+  filter: drop-shadow(0 15px 35px rgba(80, 140, 255, 0.6));
 }
 
 .dashboard{
